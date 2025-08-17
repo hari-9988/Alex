@@ -1,124 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Join PKP Brand on Telegram</title>
+  <meta charset="UTF-8">
+  <title>Join Telegram Channel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin:0;
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #c7f7a1 url('https://telegram.org/img/tl_background_pattern.png') repeat;
+      background: #f3f3f3 url('https://telegram.org/img/tg_pattern.svg') repeat;
+      background-size: 400px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
     }
-    .header {
-      background: #1c93e3;
-      color: #fff;
+
+    /* Top blue bar */
+    .topbar {
       width: 100%;
+      background: #0088cc;
+      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 16px;
-      box-sizing: border-box;
+      font-size: 16px;
       font-weight: bold;
-      font-size: 18px;
     }
-    .download-btn {
-      background: #fff;
-      color: #1c93e3;
+    .topbar button {
+      background: white;
+      color: #0088cc;
+      border: none;
       padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      text-decoration: none;
+      border-radius: 4px;
       font-weight: bold;
+      cursor: pointer;
     }
-    .container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+
+    /* Card */
     .card {
-      background: #1c1c1c;
-      color: #fff;
-      padding: 28px 22px;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 380px;
-      width: 100%;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      background: #000;
+      color: white;
+      width: 340px;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 60px;
       position: relative;
+      text-align: center;
     }
+
+    /* Avatar */
     .avatar {
-      width: 110px;
-      height: 110px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-top: -80px;
-      border: 4px solid #1c1c1c;
-      box-shadow: 0 0 0 4px #c7f7a1;
+      border: 4px solid #4caf50;
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    h1 {
-      font-size: 24px;
+
+    .name {
+      font-size: 20px;
+      margin-top: 50px;
       font-weight: bold;
-      margin: 14px 0 6px;
     }
-    .subscribers { color: #ccc; font-size: 15px; margin-bottom: 8px; }
-    .username { color: #4da6ff; font-weight: bold; font-size: 16px; display:block; margin-bottom: 10px; }
-    .desc { font-size: 15px; color: #e1e1e1; margin-bottom: 18px; line-height:1.4; }
-    .timer { font-weight: bold; color: #4da6ff; margin-bottom: 18px; font-size: 16px; }
+    .user {
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+    .subs {
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #ddd;
+    }
+    .desc {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 16px;
+    }
+
+    /* Button */
     .btn {
-      display:inline-block;
-      padding:14px 28px;
-      background: #2aabee;
-      color:#fff;
-      font-weight:bold;
+      display: inline-block;
+      background: #0088cc;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
       border-radius: 6px;
-      text-decoration:none;
-      font-size:17px;
-      transition: transform 0.2s, background 0.2s;
+      font-weight: bold;
+      transition: transform 0.2s ease;
     }
     .btn:hover {
-      background:#2299d8;
-      transform: scale(1.05);
+      transform: scale(1.07);
     }
-    .invite { margin-top:18px; font-size:14px; color:#aaa; line-height:1.4; }
+
+    /* Countdown */
+    .timer {
+      margin: 14px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff5252;
+    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div>Telegram</div>
-    <a href="https://telegram.org/dl" class="download-btn">DOWNLOAD TELEGRAM</a>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    Telegram
+    <button>DOWNLOAD TELEGRAM</button>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <img src="your-logo.jpg" alt="Channel Logo" class="avatar">
-      <h1>PKP Brand</h1>
-      <div class="subscribers">52,000 subscribers</div>
-      <span class="username">@PKPBrand</span>
-      <div class="desc">Currently India's No.1 Cricket Analyst 🔥 With Over 3 Million Followers Globally.</div>
-      <div class="timer">TIME LEFT: <span id="count">60</span> SECONDS</div>
-      <a href="https://t.me/+3BXPMsOEhVA3ZDQx" class="btn">JOIN CHANNEL</a>
-      <div class="invite">You are invited to the channel <b>PKP Brand</b><br>Click above to join.</div>
-    </div>
+  <!-- Card -->
+  <div class="card">
+    <img src="your-logo.jpg" class="avatar" alt="Logo">
+    <div class="name">PKP Brand</div>
+    <div class="user">@PKPBrand</div>
+    <div class="subs">52,000 subscribers</div>
+    <div class="desc">India's No.1 Cricket Prediction Channel</div>
+    <div class="timer" id="timer">00:59</div>
+    <a href="https://t.me/+3BXPMsOEhVA3ZDQx" class="btn">JOIN CHANNEL</a>
   </div>
 
   <script>
-    let time = 60;
-    const el = document.getElementById('count');
-    setInterval(()=>{
-      if(time>0){
-        time--;
-        el.textContent = time;
+    // Simple countdown
+    let sec = 59;
+    const timer = document.getElementById('timer');
+    setInterval(() => {
+      if (sec > 0) {
+        sec--;
+        timer.textContent = "00:" + (sec < 10 ? "0" + sec : sec);
+      } else {
+        sec = 59;
       }
-    },1000);
+    }, 1000);
   </script>
+
 </body>
 </html>
