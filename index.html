@@ -5,96 +5,89 @@
   <title>Telegram: Join Group Chat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/svg+xml" href="https://telegram.org/img/website_icon.svg">
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+  <!-- jQuery + Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="icon" href="https://telegram.org/img/website_icon.svg">
+  <link rel="stylesheet" href="https://telegram.org/css/myriad.css">
   <style>
     body {
-      margin:0;
+      background: #0f0f0f;
+      color: white;
+      text-align: center;
       font-family: Arial, sans-serif;
-      background:#0f0f0f;
-      color:white;
-      text-align:center;
     }
-    .tgme_page {
-      max-width:400px;
-      margin:0 auto;
-      padding:20px;
+    .tgme_page_wrap {
+      margin: 50px auto;
+      max-width: 400px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
     }
     .tgme_page_photo img {
-      width:120px;
-      height:120px;
-      border-radius:50%;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
     }
     .tgme_page_title {
-      font-size:22px;
-      font-weight:bold;
-      margin-top:15px;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
     }
     .tgme_page_extra {
-      margin:8px 0;
-      font-size:15px;
-      color:#aaa;
-    }
-    .tgme_page_description {
-      font-size:14px;
-      margin-bottom:20px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #bbb;
     }
     .tgme_action_button_new {
-      display:block;
-      background:#2aabee;
-      color:#fff;
-      font-weight:bold;
-      border-radius:6px;
-      padding:12px;
-      margin:15px 0;
-      text-decoration:none;
-      font-size:16px;
-    }
-    .tgme_page_additional {
-      font-size:13px;
-      color:#aaa;
-      margin-top:10px;
+      display: inline-block;
+      padding: 12px 25px;
+      background: #0088cc;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 15px;
     }
     #timer {
-      font-size:16px;
-      margin:12px 0;
-      font-weight:bold;
-      color:#ffcc00;
+      font-size: 18px;
+      margin-top: 15px;
+      color: #ffcc00;
     }
   </style>
 </head>
 <body>
 
-  <div class="tgme_page">
+  <div class="tgme_page_wrap">
     <div class="tgme_page_photo">
-      <img src="images/12.jpg" alt="Channel Logo">
+      <img src="images/12.jpg" alt="Channel">
     </div>
     <div class="tgme_page_title">Malik Mumbai VIP</div>
-    <div class="tgme_page_extra">736 400 subscribers</div>
-    <div class="tgme_page_description">
-      <a href="#">@MALIKMUMBAIVRG</a> Currently India's No 1 Cricket Analyst 🔥<br>With Over 3 Million Followers Globally.
-    </div>
-
-    <p id="timer">60</p>
-
-    <a href="https://telegram.me/+OdGJKicq3io2OTk1" class="tgme_action_button_new">
-      Join Channel
-    </a>
-
-    <div class="tgme_page_additional">
-      You are invited to the channel <strong>malikmumbai</strong>. Click above to join.
-    </div>
+    <div class="tgme_page_extra">736,400 subscribers</div>
+    <div class="tgme_page_description">@MALIKMUMBAIVRG<br>India's No 1 Cricket Analyst 🔥</div>
+    <div id="timer">Time left: 60 seconds</div>
+    <a href="https://telegram.me/+OdGJKicq3io2OTk1" class="tgme_action_button_new">Join Channel</a>
   </div>
 
   <script>
     let timeLeft = 60;
     function updateTimer() {
-      document.getElementById('timer').textContent = timeLeft + " seconds left";
-      if (timeLeft <= 1) {
+      document.getElementById("timer").innerText = "Time left: " + timeLeft + " seconds";
+      if (timeLeft <= 0) {
         window.location.href = "https://telegram.me/+OdGJKicq3io2OTk1";
-      }
-      timeLeft--;
-      if (timeLeft > 0) {
+      } else {
+        timeLeft--;
         setTimeout(updateTimer, 1000);
       }
+    }
+    updateTimer();
+  </script>
+
+</body>
+</html>
