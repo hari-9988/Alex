@@ -1,357 +1,77 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PKP Brand – Cricket Predictions on Telegram</title>
-  <meta name="description" content="Join PKP Brand on Telegram for fast, data‑driven cricket match insights, line‑ups, and live alerts. Tap to join now." />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="PKP Brand – Cricket Predictions on Telegram" />
-  <meta property="og:description" content="Fast, data‑driven cricket insights. Join free on Telegram." />
-  <meta property="og:image" content="/og-image.png" />
-  <meta property="og:url" content="https://your-domain.github.io/" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Favicon (replace) -->
-  <link rel="icon" href="/favicon.ico" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alexander</title>
   <style>
-    /* ========== THEME ==========
-       EDIT HERE: channel name & link (also see HTML below)
-       data-channel-name="PKP Brand"
-       data-telegram-link="https://t.me/+3BXPMsOEhVA3ZDQx"
-    */
-
-    :root{
-      --bg-1: 264 88% 56%; /* violet */
-      --bg-2: 208 100% 55%; /* blue */
-      --bg-3: 152 72% 45%; /* teal */
-      --glass: 0 0% 100% / 10%;
-      --card: 0 0% 100% / 65%;
-      --stroke: 0 0% 100% / 15%;
-      --txt: 220 15% 96%;
-      --muted: 220 10% 75%;
-      --accent: 43 100% 50%; /* amber */
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
+    body {
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      color:hsl(var(--txt));
-      background: radial-gradient(1200px 800px at 10% -10%, hsl(var(--bg-1)/.35), transparent),
-                 radial-gradient(1200px 800px at 110% 10%, hsl(var(--bg-2)/.35), transparent),
-                 radial-gradient(1200px 900px at 50% 120%, hsl(var(--bg-3)/.35), hsl(220 25% 8%));
-      overflow-x:hidden;
+      font-family: Arial, sans-serif;
+      background: #b5f7a1 url('https://telegram.org/img/tl_background_pattern.png') repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-
-    /* Animated gradient mesh */
-    .mesh{
-      position:fixed; inset:-20vmax; z-index:-2; filter:saturate(120%);
-      background: conic-gradient(from 30deg at 30% 40%, #7c3aed, #0284c7, #10b981, #f59e0b, #7c3aed);
-      animation: spin 40s linear infinite;
-      opacity:.18; mix-blend-mode:screen;
+    .card {
+      background: #111;
+      color: #fff;
+      padding: 24px;
+      border-radius: 18px;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    @keyframes spin{to{transform:rotate(1turn)}}
-
-    /* Subtle cricket pitch grid */
-    .grid{
-      position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background:
-        linear-gradient(to right, hsl(var(--stroke)) 1px, transparent 1px) 0 0/40px 40px,
-        linear-gradient(to bottom, hsl(var(--stroke)) 1px, transparent 1px) 0 0/40px 40px;
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
     }
-
-    header{
-      position:sticky; top:0; backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, hsl(220 15% 8%/.8), transparent);
-      border-bottom:1px solid hsl(var(--stroke));
-      z-index:50;
+    h1 { font-size: 22px; margin: 8px 0; }
+    .subscribers { color: #bbb; font-size: 15px; }
+    .username { color: #4da6ff; font-weight: bold; margin: 12px 0; display:block; }
+    .desc { font-size: 15px; color: #ddd; margin-bottom: 14px; }
+    .timer { font-weight: bold; color: #4da6ff; margin-bottom: 18px; }
+    .btn {
+      display:inline-block;
+      padding:14px 22px;
+      background: #4da6ff;
+      color:#fff;
+      font-weight:bold;
+      border-radius: 10px;
+      text-decoration:none;
+      font-size:16px;
+      transition: background 0.2s;
     }
-    .wrap{max-width:1120px; margin-inline:auto; padding:16px;}
-    .row{display:flex; align-items:center; justify-content:space-between; gap:16px}
-
-    .logo{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
-    .logo svg{width:34px; height:34px}
-    .brand{font-weight:800; letter-spacing:.4px}
-
-    .btn{
-      --pad: 14px 18px; --radius: 14px; --shadow: 0 10px 30px hsl(43 100% 50%/ .35);
-      display:inline-flex; align-items:center; gap:8px; padding:var(--pad);
-      border-radius:var(--radius); border:1px solid hsl(43 96% 45%/35%);
-      background: linear-gradient(180deg, hsl(var(--accent)/.95), hsl(35 100% 45%));
-      color:#1a1300; font-weight:800; text-decoration:none; box-shadow:var(--shadow);
-      transition: transform .15s ease, box-shadow .2s ease;
-      will-change: transform;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn:active{transform: translateY(0)}
-
-    .ghost{
-      background: hsl(220 30% 12%/.6);
-      border:1px solid hsl(var(--stroke));
-      color: hsl(var(--txt));
-      box-shadow:none;
-    }
-
-    /* Hero */
-    .hero{padding: clamp(48px, 6vw, 96px) 16px 32px}
-    .hero h1{
-      font-size: clamp(28px, 4.8vw, 56px);
-      line-height:1.05; margin: 8px 0 12px; font-weight:900;
-      text-shadow: 0 1px 0 hsl(0 0% 100%/.04);
-    }
-    .muted{color:hsl(var(--muted))}
-    .hero .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
-
-    /* Floating cricket ball */
-    .ball{ position:absolute; right: max(2vw, 12px); top: -26px; width:72px; height:72px;
-      background: radial-gradient(circle at 35% 35%, #fff8, #fff0),
-                  radial-gradient(circle at 40% 40%, #9d1b1b, #5f0f0f);
-      border-radius:50%; box-shadow: inset -8px -10px 18px #3b0a0a, 0 20px 60px #0006; 
-      animation: float 6s ease-in-out infinite;
-      border:2px solid #fff2; position: relative;
-    }
-    .ball:before, .ball:after{
-      content:""; position:absolute; inset:0; border-radius:50%;
-      background: repeating-linear-gradient(90deg, #fff9 0 2px, transparent 2px 6px);
-      width:64px; height:64px; left:4px; top:4px; filter: drop-shadow(0 0 1px #fff7);
-      transform: rotate(25deg);
-      mask: radial-gradient(circle at 50% 50%, #000 62%, transparent 63%);
-    }
-    .ball:after{ transform: rotate(-25deg)}
-    @keyframes float{ 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-10px)} }
-
-    /* Cards */
-    .cards{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:28px}
-    .card{
-      background: linear-gradient(180deg, hsl(var(--card)), hsl(0 0% 100%/55%));
-      border:1px solid hsl(var(--stroke));
-      border-radius:18px; padding:18px; backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px hsl(220 20% 4%/.45);
-    }
-    .card h3{ margin:8px 0 6px; font-size:18px }
-    .chip{display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700; 
-      background:hsl(152 72% 45%/.15); border:1px solid hsl(152 72% 45%/45%);
-    }
-
-    /* Social proof / counters */
-    .stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:18px}
-    .stat{ text-align:center; padding:14px; border-radius:16px; border:1px solid hsl(var(--stroke)); background:hsl(220 30% 12%/.4); }
-    .stat .num{ font-size: clamp(22px, 3.6vw, 36px); font-weight:900 }
-    .stat .lbl{ color:hsl(var(--muted)); font-weight:600; letter-spacing:.3px }
-
-    /* Feature grid */
-    .features{ padding: 28px 16px 48px }
-    .fgrid{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:18px}
-    .fgrid .item{ padding:18px; border-radius:16px; border:1px solid hsl(var(--stroke)); background:hsl(220 30% 12%/.45)}
-    .item h4{ margin:8px 0 6px }
-
-    /* FAQ */
-    details{ background:hsl(220 30% 12%/.5); border:1px solid hsl(var(--stroke)); border-radius:14px; padding:12px 14px }
-    details + details{ margin-top:10px }
-    summary{ cursor:pointer; font-weight:700 }
-
-    /* Sticky mobile bar */
-    .sticky-cta{
-      position:fixed; inset:auto 0 12px; display:flex; justify-content:center; z-index:60;
-    }
-    .sticky-cta .btn{ padding:14px 22px }
-
-    footer{ padding:36px 16px 80px; color:hsl(var(--muted)); font-size:14px }
-
-    /* Responsive tweaks */
-    @media (min-width: 900px){ .ball{ top:-36px; width:96px; height:96px } }
+    .btn:hover { background:#1c8dff; }
+    .invite { margin-top:14px; font-size:14px; color:#aaa; }
   </style>
-
-  <!-- Optional: Meta Pixel (paste your pixel ID and uncomment) -->
-  <!--
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
-  -->
 </head>
-
-<body data-channel-name="PKP Brand" data-telegram-link="https://t.me/+3BXPMsOEhVA3ZDQx">
-  <div class="mesh" aria-hidden="true"></div>
-  <div class="grid" aria-hidden="true"></div>
-
-  <header>
-    <div class="wrap row">
-      <a class="logo" href="#" aria-label="PKP Brand home">
-        <!-- Minimal cricket shield logo (SVG) -->
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#f59e0b"/>
-              <stop offset="1" stop-color="#10b981"/>
-            </linearGradient>
-          </defs>
-          <path d="M8 10l24-6 24 6v16c0 14-9.8 26.2-24 30-14.2-3.8-24-16-24-30V10z" stroke="url(#g)" fill="#ffffff22" stroke-width="2"/>
-          <circle cx="34" cy="22" r="8" fill="#9d1b1b"/>
-          <path d="M12 30h40" stroke="#fff" stroke-opacity=".5"/>
-        </svg>
-        <strong class="brand" id="brand">PKP Brand</strong>
-      </a>
-      <nav class="row" style="gap:8px">
-        <a id="joinTop" class="btn" href="#join" aria-label="Join on Telegram">Join on Telegram</a>
-        <a class="btn ghost" href="#faq">FAQ</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="wrap hero" style="position:relative">
-      <div class="ball" aria-hidden="true"></div>
-      <p class="chip">Live Cricket Insights</p>
-      <h1 id="headline"><span id="brandSpan">PKP Brand</span> – Join our Telegram for fast, data‑driven match calls</h1>
-      <p class="muted">Instant alerts on toss, playing XI, pitch conditions, and momentum shifts. No spam. Just crisp insights you can act on.</p>
-      <div class="cta">
-        <a id="joinHero" class="btn" href="#join">Join Free on Telegram</a>
-        <button id="copy" class="btn ghost" type="button">Copy Invite Link</button>
-      </div>
-
-      <!-- Social proof -->
-      <div class="stats">
-        <div class="stat"><div class="num" data-target="52000">0</div><div class="lbl">Members joined</div></div>
-        <div class="stat"><div class="num" data-target="98">0</div><div class="lbl">Avg. delivery (sec)</div></div>
-        <div class="stat"><div class="num" data-target="87">0</div><div class="lbl">Series covered</div></div>
-      </div>
-
-      <!-- Value cards -->
-      <div class="cards">
-        <article class="card">
-          <h3>⚡ Lightning alerts</h3>
-          <p class="muted">Get crucial updates right when toss, line‑ups, and weather drop. Timing wins matches.</p>
-        </article>
-        <article class="card">
-          <h3>📊 Simple, actionable</h3>
-          <p class="muted">Clear calls with context. No jargon. You’ll know exactly what to do in seconds.</p>
-        </article>
-        <article class="card">
-          <h3>🔔 Noise‑free feed</h3>
-          <p class="muted">Only high‑signal posts. Mute the rest of the internet; keep the edge.</p>
-        </article>
-        <article class="card">
-          <h3>🛡️ Transparent & ethical</h3>
-          <p class="muted">We share reasoning and discourage risky behavior. Play it smart, always.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="wrap features" id="join">
-      <div class="fgrid">
-        <div class="item">
-          <h4>Why Telegram?</h4>
-          <p class="muted">Mobile‑first alerts, pinned summaries, and silent notifications when you’re busy. Perfect for match days.</p>
-          <p><a id="joinMid" class="btn" href="#">Join Now</a></p>
-        </div>
-        <div class="item">
-          <h4>What you’ll get</h4>
-          <ul class="muted" style="margin:0; padding-left:18px">
-            <li>Pre‑match read of venue, pitch, dew</li>
-            <li>Playing XI & role clarity</li>
-            <li>Live momentum swings & phase plans</li>
-            <li>Post‑match recap to learn & improve</li>
-          </ul>
-        </div>
-        <div class="item">
-          <h4>Safe & responsible</h4>
-          <p class="muted">This is an insights channel. We educate and promote discipline. No guarantees, no hype.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap" id="faq">
-      <h2 style="margin:0 0 12px">FAQ</h2>
-      <details>
-        <summary>Is this free?</summary>
-        <p class="muted">Yes. Free to join. If we ever add premium, the free channel will still share timely essentials.</p>
-      </details>
-      <details>
-        <summary>How often do you post?</summary>
-        <p class="muted">During active series and leagues. Expect pre‑match, key in‑play moments, and concise recaps.</p>
-      </details>
-      <details>
-        <summary>Do you guarantee results?</summary>
-        <p class="muted">No. Cricket is uncertain. We focus on information quality and learning, not promises.</p>
-      </details>
-    </section>
-  </main>
-
-  <div class="sticky-cta">
-    <a id="joinSticky" class="btn" href="#">Join Free on Telegram</a>
+<body>
+  <div class="card">
+    <img src="12.jpg" alt="Channel Logo" class="avatar">
+    <h1>PKP Brand</h1>
+    <div class="subscribers">48,400 subscribers</div>
+    <span class="username">@Alexandersir1</span>
+    <div class="desc">Currently India's No 1 Cricket Anaylst... 🔥 With Over 3 Million Follower Globally.</div>
+    <div class="timer">TIME LEFT: <span id="count">60</span> SECONDS</div>
+    <a href="https://telegram.dog/+bCOS0JcraUtiZGE1" class="btn">JOIN CHANNEL</a>
+    <div class="invite">You are invited to the channel <b>Alexander</b><br>Click above to join.</div>
   </div>
 
-  <footer class="wrap">
-    <small>© <span id="year"></span> <span id="brandFoot">PKP Brand</span>. Educational content only. We don’t promote gambling. Telegram® is a trademark of its owner.</small>
-  </footer>
-
   <script>
-    // ========= QUICK CUSTOMIZATION =========
-    // 1) Edit channel name & Telegram link in the <body> dataset or right here:
-    const CHANNEL_NAME = document.body.dataset.channelName || 'PKP Brand';
-    const TG_LINK = document.body.dataset.telegramLink || 'https://t.me/yourchannel';
-
-    // 2) Wire up all CTA buttons
-    const setLink = el => el && (el.href = TG_LINK);
-    setLink(document.getElementById('joinTop'));
-    setLink(document.getElementById('joinHero'));
-    setLink(document.getElementById('joinMid'));
-    setLink(document.getElementById('joinSticky'));
-
-    // 3) Brand text
-    const setText = (id, txt) => { const el = document.getElementById(id); if(el) el.textContent = txt; };
-    setText('brand', CHANNEL_NAME);
-    setText('brandSpan', CHANNEL_NAME);
-    setText('brandFoot', CHANNEL_NAME);
-
-    // 4) Copy link button
-    const copyBtn = document.getElementById('copy');
-    if(copyBtn){
-      copyBtn.addEventListener('click', async () => {
-        try{ await navigator.clipboard.writeText(TG_LINK); copyBtn.textContent = 'Link copied ✅';
-          setTimeout(()=>copyBtn.textContent='Copy Invite Link', 1500);
-        }catch(e){ window.prompt('Copy this link:', TG_LINK); }
-      });
-    }
-
-    // 5) Counter animation
-    const counters = [...document.querySelectorAll('.num')];
-    const animate = (el) => {
-      const target = +el.dataset.target;
-      const step = Math.max(1, Math.floor(target / 120));
-      let n = 0; const iv = setInterval(()=>{ n += step; if(n >= target){ n = target; clearInterval(iv);} el.textContent = n.toLocaleString(); }, 12);
-    }
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target);} })
-    }, { threshold: .6 });
-    counters.forEach(c=> io.observe(c));
-
-    // 6) Current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // 7) Track CTA clicks with Meta Pixel if present
-    const clickIds = ['joinTop','joinHero','joinMid','joinSticky'];
-    clickIds.forEach(id=>{
-      const el = document.getElementById(id);
-      el && el.addEventListener('click', ()=>{ try{ fbq && fbq('trackCustom','ClickJoin',{placement:id}); }catch(e){} });
-    });
+    let time = 60;
+    const el = document.getElementById('count');
+    setInterval(()=>{
+      if(time>0){
+        time--;
+        el.textContent = time;
+      }
+    },1000);
   </script>
 </body>
 </html>
