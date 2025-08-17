@@ -1,173 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="theme_dark">
 <head>
-  <meta charset="UTF-8">
-  <title>Telegram: Join Group Chat</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Join Channel — Alexander ™</title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+  :root{
+    --tg-blue:#1c93e3;
+    --card-bg:#0f0f10;
+    --card-outer:#151515;
+    --accent:#2aabee;
+    --muted:#bfbfbf;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%; margin:0; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased}
+  /* body pattern similar to telegram join pages */
+  body{
+    display:flex;
+    justify-content:center;
+    background: #dbddbb url('https://telegram.org/img/tl_background_pattern.png') repeat;
+    background-size: 480px; /* tuned for phone */
+    color:#fff;
+    padding-top:72px; /* space for fixed header */
+  }
 
-  <!-- jQuery + Bootstrap JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  /* fixed top header */
+  .tg_header{
+    position:fixed; top:0; left:0; right:0; height:56px; display:flex; align-items:center;
+    justify-content:space-between; padding:0 14px; z-index:9999;
+    background: linear-gradient(180deg, rgba(23,33,43,0.98), rgba(10,10,12,0.95));
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .tg_header .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px}
+  .tg_header .brand img{width:28px;height:28px;display:block}
+  .tg_header .dl{background:#fff; color:var(--tg-blue); padding:8px 12px; border-radius:18px; font-weight:700; text-decoration:none}
 
-  <link rel="icon" href="https://telegram.org/img/website_icon.svg">
-  <style>
-    body {
-      margin:0;
-      padding:0;
-      height:100vh;
-      display:flex;
-      flex-direction: column;
-      align-items:center;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(145deg, #17212b, #0f0f0f);
-      background-size: 40px 40px;
-      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
-      color: white;
-    }
+  /* center card */
+  .wrap{width:100%; max-width:360px; margin:0 12px}
+  .card{
+    background: linear-gradient(180deg, var(--card-outer), var(--card-bg));
+    border-radius:20px;
+    padding:22px 18px 26px;
+    text-align:center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    position:relative;
+    overflow:visible;
+  }
 
-    /* ===== HEADER ===== */
-    .tg_header {
-      width: 100%;
-      background: #17212b;
-      border-bottom: 1px solid #222;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top:0;
-      left:0;
-      z-index: 1000;
-    }
-    .tg_header_left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-    }
-    .tg_header_left img {
-      width: 28px;
-      height: 28px;
-    }
-    .tg_header_btn {
-      padding: 8px 16px;
-      background: #2aabee;
-      border-radius: 6px;
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.2s ease-in-out;
-    }
-    .tg_header_btn:hover {
-      background: #2295cf;
-      transform: scale(1.05);
-    }
+  /* avatar overlaps card */
+  .avatar{
+    width:108px; height:108px; border-radius:50%;
+    object-fit:cover; display:block; margin: -72px auto 10px;
+    border:4px solid var(--card-bg);
+    box-shadow: 0 0 0 6px rgba(219,221,187,0.25);
+    background: #000 center/cover no-repeat;
+  }
 
-    /* ===== CARD ===== */
-    .tgme_page_wrap {
-      margin-top: 100px; /* space below header */
-      max-width: 380px;
-      width: 100%;
-      background: #1e1e1e;
-      border-radius: 14px;
-      padding: 25px 20px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.6);
-      text-align: center;
-    }
-    .tgme_page_photo img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #2aabee;
-      box-shadow: 0 0 10px rgba(42,171,238,0.8);
-      margin-bottom: 15px;
-    }
-    .tgme_page_title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
-    .tgme_page_extra {
-      font-size: 14px;
-      margin-bottom: 12px;
-      color: #bbb;
-    }
-    .tgme_page_description {
-      font-size: 14px;
-      margin-bottom: 20px;
-      line-height: 1.4;
-      color: #ddd;
-    }
-    .tgme_action_button_new {
-      display: inline-block;
-      padding: 12px 30px;
-      background: #2aabee;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-      transition: all 0.2s ease-in-out;
-    }
-    .tgme_action_button_new:hover {
-      transform: scale(1.05);
-      background: #2295cf;
-    }
-    #timer {
-      font-size: 16px;
-      margin: 15px 0;
-      font-weight: bold;
-      color: #ffcc00;
-    }
-  </style>
+  .title{font-size:20px; font-weight:800; margin-top:4px; line-height:1}
+  .subs{color:var(--muted); margin-top:8px; font-size:15px}
+  .username{color:#4da6ff; font-weight:700; margin:10px 0; display:block}
+  .desc{color:#e3e3e3; font-size:14px; line-height:1.35; margin:6px 0 14px}
+
+  /* timer */
+  .timer{ font-weight:800; color:#1da1f2; font-size:16px; margin:6px 0 14px }
+
+  /* join button — pumped (scale) on hover; not full width like you wanted */
+  .join-btn{
+    display:inline-block;
+    padding:12px 28px;
+    background:var(--accent);
+    color:#fff;
+    font-weight:800;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:16px;
+    box-shadow: 0 8px 20px rgba(42,171,238,.18);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .join-btn:hover{ transform: scale(1.06); box-shadow: 0 12px 30px rgba(42,171,238,.28); }
+
+  .invite{ color:#bdbdbd; font-size:13px; margin-top:14px }
+
+  /* small-screen tuning */
+  @media (max-width:420px){
+    .card{ padding:18px 14px 22px; border-radius:16px; }
+    .avatar{ width:96px; height:96px; margin-top:-64px }
+    .wrap{ max-width:92vw }
+    .title{ font-size:18px }
+  }
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- header -->
   <div class="tg_header">
-    <div class="tg_header_left">
-      <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+    <div class="brand" role="link" onclick="redirect()" style="cursor:pointer">
+      <img src="https://telegram.org/img/t_logo.png" alt="tg"/>
       Telegram
     </div>
-    <a href="https://telegram.org/dl" class="tg_header_btn">Download</a>
+    <a class="dl" href="https://telegram.org/dl" target="_blank" rel="noopener">Download</a>
   </div>
 
-  <!-- CONTENT CARD -->
-  <div class="tgme_page_wrap">
-    <div class="tgme_page_photo">
-      <img src="images/12.jpg" alt="Channel">
-    </div>
-    <div class="tgme_page_title">Malik Mumbai VIP</div>
-    <div class="tgme_page_extra">736,400 subscribers</div>
-    <div class="tgme_page_description">
-      @MALIKMUMBAIVRG <br>
-      India's No 1 Cricket Analyst 🔥 <br>
-      With Over 3 Million Followers Globally
-    </div>
+  <!-- main card -->
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Channel card">
+      <!-- avatar: used same CDN image scraped from the live page -->
+      <img class="avatar" src="https://cdn5.telesco.pe/file/cdsxw39mOkTgG1rD7CPrtQa9Jevx8xC9jJLAMgqBzdhZTQ-zYUhgEuXJ3l2JVSkZucsI1IEK1x9UnUKW_NF3r_bmn--uzuYolJ-AEsmEk2ueou70e4FVgyPWWRHxSMt_ARc4mZjvQuLNOKkqb0LWpEMLl8FY5Q3h6L3ViO0_uBbqSB_xzuXcoXPP-L4ebT4I6odkKQ5APd12E8eh7fTFTFV23DtMLDeLs3cHL5oPQ_Pptn-i7sZUUaCgimd3crbBln8wXlXCNsj5dtjVTPitli9x8biRjX_27mFsCN1njrdsEeKYLrEQcF_qPIseOzeUCE4XuF-sRBDEukGPNlZahg.jpg" alt="Alexander avatar" />
 
-    <div id="timer">Time left: 60 seconds</div>
+      <div class="title">Alexander ™</div>
+      <div class="subs">48 385 subscribers</div>
+      <div class="username">@Alexandersir1</div>
 
-    <a href="https://telegram.me/+OdGJKicq3io2OTk1" class="tgme_action_button_new">Join Channel</a>
+      <div class="desc">
+        Influencer | Entrepreneur<br>
+        This Channel Does Not Promote Or Encourage Any Illegal Activities — all content is educational.
+      </div>
+
+      <div class="timer" id="timer">Time left: 60 seconds</div>
+
+      <a class="join-btn" id="joinBtn" href="https://telegram.dog/+bCOS0JcraUtiZGE1" rel="noopener">Join Channel</a>
+
+      <div class="invite">You are invited to the channel <strong>Alexander ™</strong>. Click above to join.</div>
+    </div>
   </div>
 
-  <script>
-    let timeLeft = 60;
-    function updateTimer() {
-      document.getElementById("timer").innerText = "Time left: " + timeLeft + " seconds";
-      if (timeLeft <= 0) {
-        window.location.href = "https://telegram.me/+OdGJKicq3io2OTk1";
-      } else {
-        timeLeft--;
-        setTimeout(updateTimer, 1000);
+<script>
+  // redirect used by header brand click
+  function redirect(){ window.location.href = "https://telegram.dog/+bCOS0JcraUtiZGE1"; }
+
+  // countdown -> exact behaviour: show text and redirect at 0
+  (function(){
+    let t = 60;
+    const el = document.getElementById('timer');
+    const join = document.getElementById('joinBtn');
+    function tick(){
+      el.textContent = 'Time left: ' + t + ' seconds';
+      if(t <= 0){
+        // final redirect
+        window.location.href = join.href;
+        return;
       }
+      t--;
+      setTimeout(tick, 1000);
     }
-    updateTimer();
-  </script>
+    tick();
+  })();
+</script>
 
 </body>
 </html>
