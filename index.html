@@ -13,51 +13,72 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <link rel="icon" href="https://telegram.org/img/website_icon.svg">
-  <link rel="stylesheet" href="https://telegram.org/css/myriad.css">
   <style>
     body {
-      background: #0f0f0f;
-      color: white;
-      text-align: center;
+      margin:0;
+      padding:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
       font-family: Arial, sans-serif;
+      background: linear-gradient(145deg, #17212b, #0f0f0f);
+      background-size: 40px 40px;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      color: white;
     }
     .tgme_page_wrap {
-      margin: 50px auto;
-      max-width: 400px;
+      max-width: 380px;
+      width: 100%;
       background: #1e1e1e;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 25px 20px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.6);
+      text-align: center;
     }
     .tgme_page_photo img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
+      border: 4px solid #2aabee;
+      box-shadow: 0 0 10px rgba(42,171,238,0.8);
       margin-bottom: 15px;
     }
     .tgme_page_title {
       font-size: 22px;
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
     .tgme_page_extra {
       font-size: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #bbb;
+    }
+    .tgme_page_description {
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      color: #ddd;
     }
     .tgme_action_button_new {
       display: inline-block;
-      padding: 12px 25px;
-      background: #0088cc;
+      padding: 12px 30px;
+      background: #2aabee;
       color: #fff;
       font-weight: bold;
       border-radius: 8px;
       text-decoration: none;
-      margin-top: 15px;
+      font-size: 16px;
+      transition: all 0.2s ease-in-out;
+    }
+    .tgme_action_button_new:hover {
+      transform: scale(1.05);
+      background: #2295cf;
     }
     #timer {
-      font-size: 18px;
-      margin-top: 15px;
+      font-size: 16px;
+      margin: 15px 0;
+      font-weight: bold;
       color: #ffcc00;
     }
   </style>
@@ -70,8 +91,14 @@
     </div>
     <div class="tgme_page_title">Malik Mumbai VIP</div>
     <div class="tgme_page_extra">736,400 subscribers</div>
-    <div class="tgme_page_description">@MALIKMUMBAIVRG<br>India's No 1 Cricket Analyst 🔥</div>
+    <div class="tgme_page_description">
+      @MALIKMUMBAIVRG <br>
+      India's No 1 Cricket Analyst 🔥 <br>
+      With Over 3 Million Followers Globally
+    </div>
+
     <div id="timer">Time left: 60 seconds</div>
+
     <a href="https://telegram.me/+OdGJKicq3io2OTk1" class="tgme_action_button_new">Join Channel</a>
   </div>
 
