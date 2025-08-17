@@ -19,7 +19,7 @@
       padding:0;
       height:100vh;
       display:flex;
-      justify-content:center;
+      flex-direction: column;
       align-items:center;
       font-family: Arial, sans-serif;
       background: linear-gradient(145deg, #17212b, #0f0f0f);
@@ -27,7 +27,50 @@
       background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
       color: white;
     }
+
+    /* ===== HEADER ===== */
+    .tg_header {
+      width: 100%;
+      background: #17212b;
+      border-bottom: 1px solid #222;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top:0;
+      left:0;
+      z-index: 1000;
+    }
+    .tg_header_left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .tg_header_left img {
+      width: 28px;
+      height: 28px;
+    }
+    .tg_header_btn {
+      padding: 8px 16px;
+      background: #2aabee;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.2s ease-in-out;
+    }
+    .tg_header_btn:hover {
+      background: #2295cf;
+      transform: scale(1.05);
+    }
+
+    /* ===== CARD ===== */
     .tgme_page_wrap {
+      margin-top: 100px; /* space below header */
       max-width: 380px;
       width: 100%;
       background: #1e1e1e;
@@ -85,6 +128,16 @@
 </head>
 <body>
 
+  <!-- HEADER -->
+  <div class="tg_header">
+    <div class="tg_header_left">
+      <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+      Telegram
+    </div>
+    <a href="https://telegram.org/dl" class="tg_header_btn">Download</a>
+  </div>
+
+  <!-- CONTENT CARD -->
   <div class="tgme_page_wrap">
     <div class="tgme_page_photo">
       <img src="images/12.jpg" alt="Channel">
