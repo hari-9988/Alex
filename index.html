@@ -1,142 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme_dark">
 <head>
   <meta charset="UTF-8">
-  <title>Join Telegram Channel</title>
+  <title>Telegram: Join Group Chat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/svg+xml" href="https://telegram.org/img/website_icon.svg">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
   <style>
     body {
-      margin: 0;
+      margin:0;
       font-family: Arial, sans-serif;
-      background: #f3f3f3 url('https://telegram.org/img/tg_pattern.svg') repeat;
-      background-size: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background:#0f0f0f;
+      color:white;
+      text-align:center;
     }
-
-    /* Top blue bar */
-    .topbar {
-      width: 100%;
-      background: #0088cc;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px;
-      font-size: 16px;
-      font-weight: bold;
+    .tgme_page {
+      max-width:400px;
+      margin:0 auto;
+      padding:20px;
     }
-    .topbar button {
-      background: white;
-      color: #0088cc;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
+    .tgme_page_photo img {
+      width:120px;
+      height:120px;
+      border-radius:50%;
     }
-
-    /* Card */
-    .card {
-      background: #000;
-      color: white;
-      width: 340px;
-      border-radius: 12px;
-      padding: 16px;
-      margin-top: 60px;
-      position: relative;
-      text-align: center;
+    .tgme_page_title {
+      font-size:22px;
+      font-weight:bold;
+      margin-top:15px;
     }
-
-    /* Avatar */
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 4px solid #4caf50;
-      position: absolute;
-      top: -60px;
-      left: 50%;
-      transform: translateX(-50%);
+    .tgme_page_extra {
+      margin:8px 0;
+      font-size:15px;
+      color:#aaa;
     }
-
-    .name {
-      font-size: 20px;
-      margin-top: 50px;
-      font-weight: bold;
+    .tgme_page_description {
+      font-size:14px;
+      margin-bottom:20px;
     }
-    .user {
-      color: #aaa;
-      margin-bottom: 6px;
+    .tgme_action_button_new {
+      display:block;
+      background:#2aabee;
+      color:#fff;
+      font-weight:bold;
+      border-radius:6px;
+      padding:12px;
+      margin:15px 0;
+      text-decoration:none;
+      font-size:16px;
     }
-    .subs {
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #ddd;
+    .tgme_page_additional {
+      font-size:13px;
+      color:#aaa;
+      margin-top:10px;
     }
-    .desc {
-      font-size: 14px;
-      color: #ccc;
-      margin-bottom: 16px;
-    }
-
-    /* Button */
-    .btn {
-      display: inline-block;
-      background: #0088cc;
-      color: white;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-    .btn:hover {
-      transform: scale(1.07);
-    }
-
-    /* Countdown */
-    .timer {
-      margin: 14px 0;
-      font-size: 16px;
-      font-weight: bold;
-      color: #ff5252;
+    #timer {
+      font-size:16px;
+      margin:12px 0;
+      font-weight:bold;
+      color:#ffcc00;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top bar -->
-  <div class="topbar">
-    Telegram
-    <button>DOWNLOAD TELEGRAM</button>
-  </div>
+  <div class="tgme_page">
+    <div class="tgme_page_photo">
+      <img src="images/12.jpg" alt="Channel Logo">
+    </div>
+    <div class="tgme_page_title">Malik Mumbai VIP</div>
+    <div class="tgme_page_extra">736 400 subscribers</div>
+    <div class="tgme_page_description">
+      <a href="#">@MALIKMUMBAIVRG</a> Currently India's No 1 Cricket Analyst 🔥<br>With Over 3 Million Followers Globally.
+    </div>
 
-  <!-- Card -->
-  <div class="card">
-    <img src="your-logo.jpg" class="avatar" alt="Logo">
-    <div class="name">PKP Brand</div>
-    <div class="user">@PKPBrand</div>
-    <div class="subs">52,000 subscribers</div>
-    <div class="desc">India's No.1 Cricket Prediction Channel</div>
-    <div class="timer" id="timer">00:59</div>
-    <a href="https://t.me/+3BXPMsOEhVA3ZDQx" class="btn">JOIN CHANNEL</a>
+    <p id="timer">60</p>
+
+    <a href="https://telegram.me/+OdGJKicq3io2OTk1" class="tgme_action_button_new">
+      Join Channel
+    </a>
+
+    <div class="tgme_page_additional">
+      You are invited to the channel <strong>malikmumbai</strong>. Click above to join.
+    </div>
   </div>
 
   <script>
-    // Simple countdown
-    let sec = 59;
-    const timer = document.getElementById('timer');
-    setInterval(() => {
-      if (sec > 0) {
-        sec--;
-        timer.textContent = "00:" + (sec < 10 ? "0" + sec : sec);
-      } else {
-        sec = 59;
+    let timeLeft = 60;
+    function updateTimer() {
+      document.getElementById('timer').textContent = timeLeft + " seconds left";
+      if (timeLeft <= 1) {
+        window.location.href = "https://telegram.me/+OdGJKicq3io2OTk1";
       }
-    }, 1000);
-  </script>
-
-</body>
-</html>
+      timeLeft--;
+      if (timeLeft > 0) {
+        setTimeout(updateTimer, 1000);
+      }
